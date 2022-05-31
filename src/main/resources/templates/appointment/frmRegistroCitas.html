@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head"></head>
+<meta charset="UTF-8">
+
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	
+	<div class="container">
+	<hr style="color: #fdfdfd"></hr>
+		<div style="font-family: 'Roboto Condensed',sans-serif; font-size: 150%">Registro Citas</div>
+		<hr style="background-color: #FA251B"></hr>
+		<form th:action="@{/appointments/save}" th:object="${a}" method="post">
+
+			<div class="col-sm-12">
+				<label class="form-label" for="idAppointment">Id:</label> <input
+					class="form-control" type="text" th:field="*{idAppointment}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="dateAppointment">Fecha de
+					Cita:</label> <input class="form-control" type="date"
+					th:field="*{dateAppointment}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="descriptionAppointment">Descripción:</label> <input
+					class="form-control" type="text" th:field="*{descriptionAppointment}"></input>
+			</div>
+			
+			<br>
+			
+			<div class="col-sm-12">
+				<input class="btn btn-dark" type="submit" value="Registrar"></input>
+			</div>
+
+		</form>
+	</div>
+	<div align="right">
+	<footer th:replace="master/master :: footer"></footer>
+    </div>
+</body>
+</html>
