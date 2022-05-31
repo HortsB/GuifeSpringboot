@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head ">
+<meta charset="ISO-8859-1">
+<title>Listas</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div>
+		<div class="table-responsive">
+			<table class="table table-white">
+				<thead>
+					<tr>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Id</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Nombre
+							completo</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Apodo</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Fecha
+							de nacimiento</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Telefono</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Tipo
+							de especialista</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Contraseña</th>
+
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Descipcion</th>
+					</tr>
+				</thead>
+				<tbody id="specialist-list">
+					<tr th:each="specialist:${listSpecialists}">
+						<td th:text="${specialist.idSpecialist}"></td>
+						<td th:text="${specialist.fullNameSpecialist}"></td>
+						<td th:text="${specialist.nickNameSpecialist}"></td>
+						<td th:text="${#dates.format(specialist.birthSpecialist,'dd/MM/yy')}"></td>
+						<td th:text="${specialist.phoneSpecialist}"></td>
+						<td th:text="${specialist.typeSpecialist}"></td>
+						<td th:text="${specialist.passwordSpecialist}"></td>
+						<td th:text="${specialist.descriptionSpecialist}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+		<footer th:replace="master/master  ::  footer"></footer>
+</body>
+</html>
