@@ -1,9 +1,9 @@
-package pe.edu.upc.guife.serviceinterface;
+package pe.edu.upc.Guife_Springboot.serviceinterface;
 
 import java.util.List;
 import java.util.Optional;
 
-import pe.edu.upc.guife.entities.Country;
+import pe.edu.upc.Guife_Springboot.entities.Country;
 
 public interface ICountryService {
 	
