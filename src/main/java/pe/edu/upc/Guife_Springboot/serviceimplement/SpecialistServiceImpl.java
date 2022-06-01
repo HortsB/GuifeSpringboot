@@ -1,6 +1,7 @@
 package pe.edu.upc.Guife_Springboot.serviceimplement;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,22 @@ public class SpecialistServiceImpl implements ISpecialistService {
 	@Override
 	public List<Specialist> list() {
 		return sR.findAll();
+	}
+
+	@Override
+	public void delete(int idSpecialist) {
+		sR.deleteById(idSpecialist);
+		
+	}
+
+	@Override
+	public Optional<Specialist> listId(int idSpecialist) {
+		return sR.findById(idSpecialist);
+	}
+
+	@Override
+	public void update(Specialist specialist) {
+		sR.save(specialist);
+		
 	}
 }
