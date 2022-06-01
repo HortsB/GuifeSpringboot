@@ -1,4 +1,4 @@
-package pe.edu.upc.guife.entities;
+package pe.edu.upc.Guife_Springboot.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
