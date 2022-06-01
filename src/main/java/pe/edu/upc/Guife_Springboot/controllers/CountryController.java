@@ -1,4 +1,4 @@
-package pe.edu.upc.guife.controllers;
+package pe.edu.upc.Guife_Springboot.controllers;
 
 import java.util.Map;
 import java.util.Optional;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import pe.edu.upc.guife.entities.Country;
-import pe.edu.upc.guife.serviceinterface.ICountryService;
+import pe.edu.upc.Guife_Springboot.entities.Country;
+import pe.edu.upc.Guife_Springboot.serviceinterface.ICountryService;
 
 @Controller
 @RequestMapping("/country")
