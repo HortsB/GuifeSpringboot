@@ -1,4 +1,4 @@
-package pe.edu.upc.guife.serviceimplement;
+package pe.edu.upc.Guife_Springboot.serviceimplement;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upc.guife.entities.Appointment;
-import pe.edu.upc.guife.repositories.IAppointmentRepository;
-import pe.edu.upc.guife.serviceinterface.IAppointmentService;
+import pe.edu.upc.Guife_Springboot.entities.Appointment;
+import pe.edu.upc.Guife_Springboot.repositories.IAppointmentRepository;
+import pe.edu.upc.Guife_Springboot.serviceinterface.IAppointmentService;
 
 @Service
 public class AppointmentServiceImpl implements IAppointmentService{
