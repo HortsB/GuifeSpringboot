@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head"></head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">Registro
+			Persona</div>
+		<hr style="background-color: #FA251B"></hr>
+		<form th:action="@{/detalleCitas/save}" th:object="${sa}"
+			method="post">
+
+			<div class="col-sm-12">
+				<label class="form-label" for="idScheduledAppointments">Id:</label>
+				<input class="form-control" type="text"
+					th:field="*{idScheduledAppointments}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="descriptionAppointment">Descripción:</label>
+				<input class="form-control"
+					th:errorclass="'form-control alert-danger'" type="text"
+					th:field="*{descriptionAppointment}"></input> <small
+					class="form-text text-danger"
+					th:if="${#fields.hasErrors('descriptionAppointment')}"
+					th:errors="*{descriptionAppointment}"></small>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="dateAppointment">Fecha de
+					Cita:</label> <input class="form-control"
+					th:errorclass="'form-control alert-danger'" type="date"
+					th:field="*{dateAppointment}"></input> <small
+					class="form-text text-danger"
+					th:if="${#fields.hasErrors('dateAppointment')}"
+					th:errors="*{dateAppointment}"></small>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="TypeSpecialist">Tipo de
+					Especialista:</label> <select name="select" class="form-control"
+					th:field="*{TypeSpecialist}">
+					<option value="Psicológo" selected="selected">Psicológo</option>
+					<option value="Orientador laboral">Orientador laboral</option>
+					<option value="Terapeuta">Terapeuta</option>
+				</select>
+
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="Especialista">Especialista:</label> <select
+					name="Especialista" class="form-control"
+					th:field="*{specialist.idSpecialist}">
+					<option th:each="a:${listaEspecialistas}"
+						th:value="${a.idSpecialist}" th:text="${a.fullNameSpecialist}"
+						th:selected="(${a.idSpecialist}==*{specialist.idSpecialist})"></option>
+				</select>
+
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="Especialista">Cliente:</label> <select
+					name="Especialista" class="form-control"
+					th:field="*{customer.idCustomer}">
+					<option th:each="c:${listaCustomers}" th:value="${c.idCustomer}"
+						th:text="${c.person.fullNamePerson}"
+						th:selected="(${c.idCustomer}==*{customer.idCustomer})"></option>
+				</select>
+
+			</div>
+
+			<br>
+
+			<div class="col-sm-12">
+				<input class="btn btn-dark" type="submit"></input>
+			</div>
+
+		</form>
+	</div>
+	<div align="right">
+		<footer th:replace="master/master :: footer"></footer>
+	</div>
+</body>
+</html>

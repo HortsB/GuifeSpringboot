@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head"></head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">Registro
+			Administrador</div>
+		<hr style="background-color: #FA251B"></hr>
+		<form th:action="@{/administradores/save}" th:object="${a}" method="post">
+
+			<div class="col-sm-12">
+				<label class="form-label" for="idAdministrador">Id:</label> <input
+					class="form-control" type="text" th:field="*{idAdministrador}"></input>
+			</div>
+			
+			<div class="col-sm-12">
+				<label class="form-label" for="person">Persona:</label> <select
+					name="selectPerson" class="form-control"
+					th:field="*{person.idPerson}">
+					<option th:each="p:${listaPersonas}" th:value="${p.idPerson}"
+						th:text="${p.fullNamePerson}"
+						th:selected="(${p.idPerson}==*{person.idPerson})"></option>
+				</select>
+
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="nickNameAdministrador">nickName:</label>
+				<input class="form-control" type="text" th:field="*{nickNameAdministrador}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="mailAdministrator">E-mail:</label> <input
+					class="form-control" type="text" th:field="*{mailAdministrador}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="phoneAdministrador">Teléfono:</label> <input
+					class="form-control" type="text" th:field="*{phoneAdministrador}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="passwordAdministrador">Contraseña:</label> <input 
+					class="form-control" type="text" th:field="*{passwordAdministrador}"></input>
+			</div>
+			
+			
+
+			<br>
+
+			<div class="col-sm-12">
+				<input class="btn btn-dark" type="submit"></input>
+			</div>
+
+		</form>
+	</div>
+	<div align="right">
+		<footer th:replace="master/master :: footer"></footer>
+	</div>
+</body>
+</html>

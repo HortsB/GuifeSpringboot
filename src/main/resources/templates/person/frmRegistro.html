@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head"></head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">Registro
+			Persona</div>
+		<hr style="background-color: #FA251B"></hr>
+		<form th:action="@{/persons/save}" th:object="${p}" method="post">
+
+			<div class="col-sm-12">
+				<label class="form-label" for="idPerson">Id:</label> <input
+					class="form-control" type="text" th:field="*{idPerson}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="fullNamePerson">Nombres:</label> <input
+					class="form-control" type="text" th:field="*{fullNamePerson}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="nickNamePerson">nickNamePerson:</label>
+				<input class="form-control" type="text" th:field="*{nickNamePerson}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="mailPerson">E-mail:</label> <input
+					class="form-control" type="text" th:field="*{mailPerson}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="phonePerson">Teléfono:</label> <input
+					class="form-control" type="text" th:field="*{phonePerson}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="passwordPerson">Contraseña:</label> <input 
+					class="form-control" type="text" th:field="*{passwordPerson}"></input>
+			</div>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="pais">País:</label> <select
+					name="pais" class="form-control"
+					th:field="*{country.idCountry}">
+					<option th:each="c:${listaPaises}" th:value="${c.idCountry}"
+						th:text="${c.NameCountry}"
+						th:selected="(${c.idCountry}==*{country.idCountry})"></option>
+				</select>
+
+			</div>
+			
+
+			<br>
+
+			<div class="col-sm-12">
+				<input class="btn btn-dark" type="submit"></input>
+			</div>
+
+		</form>
+	</div>
+	<div align="right">
+		<footer th:replace="master/master :: footer"></footer>
+	</div>
+</body>
+</html>

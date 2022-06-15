@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">
+			Lista Clientes</div>
+		<hr style="background-color: #FA251B"></hr>
+		<hr style="color: #fdfdfd"></hr>
+
+		<div class="table-responsive">
+			<table class="table table-white">
+				<thead>
+					<tr>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Id</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Persona</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Nick</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">E-mail</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Teléfono</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Operación</th>
+
+					</tr>
+				</thead>
+
+				<tbody id="customer-list">
+					<tr th:each="customer:${listaCustomers}">
+						<td th:text="${customer.idCustomer}"></td>
+						<td th:text="${customer.person.fullNamePerson}"></td>
+						<td th:text="${customer.nickNameCustomer}"></td>
+						<td th:text="${customer.mailCustomer}"></td>
+						<td th:text="${customer.phoneCustomer}"></td>
+						<td><a th:href="@{/customers/delete?id=}+${customer.idCustomer}">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div align="right">
+		<footer th:replace="master/master :: footer"></footer>
+	</div>
+
+</body>
+</html>
