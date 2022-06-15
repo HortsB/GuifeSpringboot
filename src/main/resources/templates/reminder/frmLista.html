@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head ">
+<meta charset="UTF-8">
+<title>Listas</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">
+			Lista de recordatorios</div>
+		<hr style="background-color: #FA251B"></hr>
+		<hr style="color: #fdfdfd"></hr>
+		<div class="table-responsive">
+			<table class="table table-white">
+				<thead>
+					<tr>
+
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Id</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Repeticiones</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Alarma</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Tarea</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Operación</th>
+
+					</tr>
+				</thead>
+				<tbody id="reminder-list">
+					<tr th:each="reminder:${listReminder}">
+
+						<td th:text="${reminder.idReminder}"></td>
+
+						<td th:text="${reminder.timeReminder}"></td>
+						<td th:text="${reminder.alarmReminder}"></td>
+						<td th:text="${reminder.task.descriptionTask}"></td>
+						<td><a
+							th:href="@{/reminder/delete?id=}+${reminder.idReminder}">Eliminar</a></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<footer th:replace="master/master  ::  footer"></footer>
+</body>
+</html>

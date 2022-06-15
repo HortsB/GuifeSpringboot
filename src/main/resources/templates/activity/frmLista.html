@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head ">
+<meta charset="UTF-8">
+<title>Listas</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">
+			Lista de actividades</div>
+		<hr style="background-color: #FA251B"></hr>
+		<hr style="color: #fdfdfd"></hr>
+		<div class="table-responsive">
+			<table class="table table-white">
+				<thead>
+					<tr>
+
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Id</th>
+
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Tipo
+							de actividad</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Prioridad</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Frecuencia</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Operación</th>
+
+					</tr>
+				</thead>
+				<tbody id="activity-list">
+					<tr th:each="activity:${listActivity}">
+
+						<td th:text="${activity.idActivity}"></td>
+
+						<td th:text="${activity.typeActivity}"></td>
+						<td th:text="${activity.priorityActivity}"></td>
+						<td th:text="${activity.frecuentActivity}"></td>
+						<td><a
+							th:href="@{/activity/delete?id=}+${activity.idActivity}">Eliminar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<footer th:replace="master/master  ::  footer"></footer>
+</body>
+</html>

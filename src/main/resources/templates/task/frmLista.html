@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head ">
+<meta charset="UTF-8">
+<title>Listas</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">
+			Lista de tareas</div>
+		<hr style="background-color: #FA251B"></hr>
+		<hr style="color: #fdfdfd"></hr>
+		<div class="table-responsive">
+			<table class="table table-white">
+				<thead>
+					<tr>
+
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Id</th>
+
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Descripción</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Estado</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Fecha</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Id
+							de actividad</th>
+
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Operación</th>
+
+					</tr>
+				</thead>
+				<tbody id="task-list">
+					<tr th:each="task:${listTask}">
+
+						<td th:text="${task.idTask}"></td>
+
+						<td th:text="${task.descriptionTask}"></td>
+						<td th:text="${task.statusTask}"></td>
+						<td th:text="${task.dateTask}"></td>
+						<td th:text="${task.activity.idActivity}"></td>
+						<td><a th:href="@{/task/delete?id=}+${task.idTask}">Eliminar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<footer th:replace="master/master  ::  footer"></footer>
+</body>
+</html>
