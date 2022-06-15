@@ -19,40 +19,53 @@ public class Specialist {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idSpecialist;
-	@Column(name = "fullNameSpecialist", length = 50, nullable = false)
+
+	@NotEmpty(message = "Ingresa el nombre")
+	@Column(name = "fullNameSpecialist", nullable = false, length = 45)
 	private String fullNameSpecialist;
-	@Column(name = "nickNameSpecialist", length = 40, nullable = false)
+
+	@NotEmpty(message = "Ingresa el nick")
+	@Column(name = "nickNameSpecialist", nullable = false, length = 45)
 	private String nickNameSpecialist;
-	@SuppressWarnings("static-access")
-	@DateTimeFormat(pattern = "yy-MM-dd")
-	@Temporal(TemporalType.DATE.TIMESTAMP)
-	@Column(name = "birthSpecialist", nullable = false)
-	private Date birthSpecialist;
-	@Column(name = "phoneSpecialist", length = 9, nullable = false)
+
+	@Size(min = 9, max = 9)
+	@NotEmpty(message = "Ingresa un número valido")
+	@Column(name = "phoneSpecialist", nullable = false, length = 45)
 	private String phoneSpecialist;
-	@Column(name = "typeSpecialist", length = 45, nullable = false)
+
+	@Column(name = "typeSpecialist", nullable = false, length = 45)
 	private String typeSpecialist;
-	@Column(name = "passwordSpecialist", length = 45, nullable = false)
+
+	@NotEmpty(message = "Ingresa una contraseña")
+	@Column(name = "passwordSpecialist", nullable = false, length = 45)
 	private String passwordSpecialist;
-	@Column(name = "descriptionSpecialist", length = 100, nullable = false)
+
+	@NotEmpty(message = "Ingresa una descipción")
+	@Column(name = "descriptionSpecialist", nullable = false, length = 45)
 	private String descriptionSpecialist;
 
-	public Specialist() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@ManyToOne
+	@JoinColumn(name = "idPerson")
+	private Person person;
 
-	public Specialist(int idSpecialist, String fullNameSpecialist, String nickNameSpecialist, Date birthSpecialist,
-			String phoneSpecialist, String typeSpecialist, String passwordSpecialist, String descriptionSpecialist) {
+	public Specialist(int idSpecialist, @NotEmpty(message = "Ingresa el nombre") String fullNameSpecialist,
+			@NotEmpty(message = "Ingresa el nick") String nickNameSpecialist,
+			@Size(min = 9, max = 9) @NotEmpty(message = "Ingresa un número valido") String phoneSpecialist,
+			String typeSpecialist, @NotEmpty(message = "Ingresa una contraseña") String passwordSpecialist,
+			@NotEmpty(message = "Ingresa una descipción") String descriptionSpecialist, Person person) {
 		super();
 		this.idSpecialist = idSpecialist;
 		this.fullNameSpecialist = fullNameSpecialist;
 		this.nickNameSpecialist = nickNameSpecialist;
-		this.birthSpecialist = birthSpecialist;
 		this.phoneSpecialist = phoneSpecialist;
 		this.typeSpecialist = typeSpecialist;
 		this.passwordSpecialist = passwordSpecialist;
 		this.descriptionSpecialist = descriptionSpecialist;
+		this.person = person;
+	}
+
+	public Specialist() {
+		super();
 	}
 
 	public int getIdSpecialist() {
@@ -77,14 +90,6 @@ public class Specialist {
 
 	public void setNickNameSpecialist(String nickNameSpecialist) {
 		this.nickNameSpecialist = nickNameSpecialist;
-	}
-
-	public Date getBirthSpecialist() {
-		return birthSpecialist;
-	}
-
-	public void setBirthSpecialist(Date birthSpecialist) {
-		this.birthSpecialist = birthSpecialist;
 	}
 
 	public String getPhoneSpecialist() {
@@ -117,6 +122,14 @@ public class Specialist {
 
 	public void setDescriptionSpecialist(String descriptionSpecialist) {
 		this.descriptionSpecialist = descriptionSpecialist;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 }
