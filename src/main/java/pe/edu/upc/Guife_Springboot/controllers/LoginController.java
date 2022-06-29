@@ -20,7 +20,7 @@ public class LoginController {
 			RedirectAttributes flash) {
 
 		if (principal != null) {
-			return "redirect:/country/list";
+			return "redirect:/panel/about";
 		}
 
 		if (error != null) {
