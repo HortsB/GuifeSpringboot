@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master:: head"></head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="background-color: #fdfdfd"></hr>
+		<hr style="background-color: #fdfdfd"></hr>
+		<hr style="background-color: #fdfdfd"></hr>
+		<hr style="background-color: #fdfdfd"></hr>
+		<div align="center"
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 200%">Registrar
+			usuario</div>
+
+		<form th:action="@{/usuarios/guardar}" th:object="${users}"
+			method="post">
+
+			<hr style="background-color: #fdfdfd"></hr>
+
+			<div class="col-sm-12">
+				<label class="form-label" for="username">Username: </label> <input
+					class="form-control" type="text" th:field="*{username}"
+					th:errorclass="'form-control alert-danger'" /><small
+					class="form-text text-danger"
+					th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
+			</div>
+
+			<hr style="background-color: #fdfdfd"></hr>
+			<div class="col-sm-12">
+				<label class="form-label" for="password">Password : </label> <input
+					class="form-control" type="password" th:field="*{password}"
+					th:errorclass="'form-control alert-danger'" /><small
+					class="form-text text-danger"
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+			</div>
+			<hr style="background-color: #fdfdfd"></hr>
+
+			<hr style="background-color: #fdfdfd"></hr>
+			<div class="col-sm-12">
+				<label class="form-label" for="estado">Estado: </label> <input
+					type="checkbox" th:field="*{enabled}"></input>
+			</div>
+
+			<hr style="background-color: #fdfdfd"></hr>
+			<div class="col-sm-12">
+				<input class="btn btn-success" type="submit" value="Registrar"></input>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>
