@@ -60,5 +60,10 @@ public class ActivityController {
 		}
 		return "activity/frmLista";
 	}
+	@RequestMapping("/report")
+	public String NTaskPerActivity(Map<String,Object>model) {
+		model.put("lista", acService.NTaskPerActivity());
+		return "activity/report";
+	}
 	
 }
