@@ -45,4 +45,9 @@ public class ActivityServiceImpl implements IActivityService{
 		acR.save(activity);
 	}
 
+	@Override
+	public List<String[]> NTaskPerActivity() {
+		// TODO Auto-generated method stub
+		return acR.NTaskPerActivity();
+	}
 }
