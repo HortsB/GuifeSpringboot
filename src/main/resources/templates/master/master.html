@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Guife</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body style="margin: 0; position: relative; padding-bottom: 6em;">
+	<header th:fragment="header" style="top: 0">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+			<div class="container-fluid">
+				<div class="figure">
+					<img alt="" th:src="@{/images/guife_icon.ico}" width=60 height=60>
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/panel/about}" style="color: white;">Inicio</a></li>
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasAnyRole('ROLE_ADMIN')"> Especialista </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/specialist/new}">Registro</a></li>
+								<li><a class="dropdown-item" th:href="@{/specialist/list}">Lista</a></li>
+							</ul></li>
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_ESPECIALISTA')"> Cita</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/detalleCitas/new}">Regisrar</a></li>
+								<li><a class="dropdown-item"
+									th:href="@{/detalleCitas/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasRole('ROLE_ADMIN')">País</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/country/new}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/country/list}">Listar</a></li>
+							</ul></li>
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENTE')">Actividad</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/activity/new}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/activity/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENTE')">Tarea</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/task/new}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/task/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENTE')">Recordatorio</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/reminder/new}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/reminder/list}">Listar</a></li>
+							</ul></li>
+							
+							<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasRole('ROLE_CLIENTE')">Persona</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/persons/new}">Regisrar</a></li>
+							</ul></li>
+
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_ESPECIALISTA')" >Persona</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/persons/new}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/persons/list}">Listar</a></li>
+							</ul></li>
+
+						
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasRole('ROLE_ADMIN')">Administrador</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item"
+									th:href="@{/administradores/new}">Regisrar</a></li>
+								<li><a class="dropdown-item"
+									th:href="@{/administradores/list}">Listar</a></li>
+							</ul></li>
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;">Cliente</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/customers/new}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/customers/list}">Listar</a></li>
+							</ul></li>
+
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasRole('ROLE_ADMIN')">Usuario</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/usuarios/nuevo}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/usuarios/listar}">Listar</a></li>
+							</ul></li>
+							
+							<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasRole('ROLE_ADMIN')">Rol</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/roles/nuevo}">Regisrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/roles/listar}">Listar</a></li>
+							</ul></li>
+							
+							<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: white;"sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENTE', 'ROLE_ESPECIALISTA')">Reportes</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/persons/report1}">Pais con mas usuarios</a></li>
+								<li><a class="dropdown-item" th:href="@{/persons/report2}">Pais con menos usuarios</a></li>
+								<li><a class="dropdown-item" th:href="@{/detalleCitas/reporteMax}">Top 3 Clientes con mas citas</a></li>
+								<li><a class="dropdown-item" th:href="@{/detalleCitas/reporteMin}">Top 3 Clientes con menos citas</a></li>
+								<li><a class="dropdown-item" th:href="@{/activity/report}">Número de tareas activas por prioridad de actividad</a></li>
+							</ul></li>
+
+						<div class="collapse navbar-collapse" id="navbarScroll">
+							<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+								style="-bs-scroll-height: 100px;">
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#"
+									id="navbarScrollingDropdown" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"
+									style="color: #fdfdfd"> Perfil </a>
+									<ul class="dropdown-menu"
+										aria-labelledby="navbarScrollingDropdown">
+
+										<li>
+
+											<form id="logoutForm" th:action="@{/logout}" method="post">
+												<button class="btn btn-dark" type="submit">Cerrar</button>
+
+											</form>
+
+										</li>
+
+									</ul></li>
+								<li class="nav-item dropdown" style="align-content: right"><a
+									id="navbarScrollingDropdown" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"
+									style="color: #fdfdfd"> <span sec:authentication="name"></span>
+								</a></li>
+								
+								
+								
+
+							</ul>
+						</div>
+
+
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<footer></footer>
+
+</body>
+</html>
