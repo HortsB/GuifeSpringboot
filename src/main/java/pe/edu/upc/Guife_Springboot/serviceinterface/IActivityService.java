@@ -11,4 +11,5 @@ public interface IActivityService {
 	public void delete(int idActivity);
 	Optional<Activity>listId(int idActivity);
 	public void update(Activity activity);
+	public List<String[]>NTaskPerActivity();
 }
