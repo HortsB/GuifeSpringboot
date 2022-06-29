@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<hr style="color: #fdfdfd"></hr>
+
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%">
+			Pais con mas usuarios</div>
+		<hr style="background-color: #FA251B"></hr>
+		<hr style="color: #fdfdfd"></hr>
+
+		<div class="table-responsive">
+			<table class="table table-white">
+				<thead>
+					<tr>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Pais</th>
+						<th style="font-family: 'Roboto Condensed', sans-serif;">Cantidad de usuarios</th>
+						
+					</tr>
+				</thead>
+
+				<tbody id="report1-list">
+					<tr th:each="repor:${lista}">
+						<td th:text="${repor[0]}"></td>
+						<td th:text="${repor[1]}"></td>
+			
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div align="right">
+		<footer th:replace="master/master :: footer"></footer>
+	</div>
+
+</body>
+</html>
